@@ -7,7 +7,7 @@ import uuid
 from functools import wraps
 
 
-def count_calls(method: callable) -> callable:
+def count_calls(method: Callable) -> Callable:
     """Decorater function count_calls"""
     @wraps(method)
     def wrapper(*args, **kwargs):
