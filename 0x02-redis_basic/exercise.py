@@ -9,10 +9,12 @@ from functools import wraps
 
 def count_calls(method: Callable) -> Callable:
     """Decorater function count_calls"""
+
+    key = method.__qualname__
+
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        self = args[0]
-        key = method.__qualname__
+        """Wrapper for decorator functionality"""
         self._redis.incr(key)
         result = method(self, *args, **kwargs)
         return result
